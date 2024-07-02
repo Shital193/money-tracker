@@ -9,12 +9,12 @@ dotenv.config();
 const port = process.env.port || 3000;
 const Username = process.env.MongoDBUsername;
 const Password = process.env.MongoDBPassword;
-
+const dbName = process.env.dbName;
 app.use(bodyparser.json());
 app.use(express.static('public'));
 app.use(bodyparser.urlencoded({extended: true}));
 
-mongoose.connect(`mongodb+srv://${Username}:${Password}@cluster0.pvlbsey.mongodb.net/MoneyTrackerData`, {});
+mongoose.connect(`mongodb+srv://${Username}:${Password}@cluster0.pvlbsey.mongodb.net/${dbName}`, {});
 const database = mongoose.connection;
 database.on('error', ()=> console.log("Error in connecting database"));
 database.once('open', ()=> console.log("Connected to dstabase"));
