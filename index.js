@@ -28,7 +28,7 @@ app.post("/insert", async (req,res) =>{
             Info: String(info),
             Date: (date_input)
         };
-        database.collection('users').insertOne((inputData), (err, collection) => {
+        await database.collection('users').insertOne((inputData), (err, collection) => {
             if(err){
                 console.log("Error inserting Data");
                 res.status(500).json({ message: "Error inserting Data"});
