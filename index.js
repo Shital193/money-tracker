@@ -31,10 +31,10 @@ app.post("/insert", async (req,res) =>{
         await database.collection('users').insertOne((inputData), (err, collection) => {
             if(err){
                 console.log("Error inserting Data");
-                res.status(500).json({ message: "Error inserting Data"});
+                res.status(500).send({ message: "Error inserting Data"});
             }
             console.log("Data inserted Successfully");
-            res.status(200).json({ message: "Data inserted successfully"});
+            res.status(200).send({ message: "Data inserted successfully"});
         });
     }
     catch(error){
